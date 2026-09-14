@@ -723,7 +723,7 @@ h2 {
 .menu-card {
   position: relative;
   display: flex;
-  min-height: 300px;
+  min-height: 340px;
   padding: 34px;
   overflow: hidden;
   border-right: 1px solid var(--line);
@@ -737,11 +737,40 @@ h2 {
   background: var(--red);
 }
 
+.dish-image,
+.dish-image::after {
+  position: absolute;
+  inset: 0;
+}
+
+.dish-image {
+  overflow: hidden;
+  background: #d9cbb6;
+}
+
+.dish-image::after {
+  content: "";
+  background: linear-gradient(180deg, rgba(238, 229, 212, 0.02) 21%, rgba(238, 229, 212, 0.7) 62%, #eee5d4 100%);
+}
+
+.featured .dish-image::after {
+  background: linear-gradient(90deg, rgba(123, 42, 30, 0.7) 0%, rgba(154, 52, 36, 0.3) 55%, rgba(154, 52, 36, 0.68) 100%);
+}
+
+.dish-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  filter: saturate(0.76) sepia(0.08) contrast(0.95);
+}
+
 .dish-number {
   position: absolute;
   top: 26px;
   right: 28px;
-  color: rgba(23, 63, 53, 0.38);
+  color: rgba(23, 63, 53, 0.62);
+  z-index: 2;
   font: 11px/1 var(--sans);
   letter-spacing: 0.2em;
 }
@@ -770,6 +799,11 @@ h2 {
   margin-bottom: 24px;
   color: var(--ink-soft);
   font-size: 14px;
+}
+
+.menu-card:not(.featured) h3,
+.menu-card:not(.featured) p {
+  text-shadow: 0 1px 12px rgba(238, 229, 212, 0.85);
 }
 
 .featured p {
